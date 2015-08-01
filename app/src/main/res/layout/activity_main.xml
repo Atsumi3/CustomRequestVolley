@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#AEAEAE" >
+    <RelativeLayout
+        android:id="@+id/head_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/head_height"
+        android:background="@android:color/white"
+        android:layout_margin="@dimen/margin">
+        <TextView
+            android:id="@+id/url_label"
+            android:layout_width="@dimen/head_height"
+            android:layout_height="@dimen/head_height"
+            android:text="@string/url"
+            android:gravity="center"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"/>
+        <Button
+            android:id="@+id/button"
+            android:layout_width="@dimen/head_height"
+            android:layout_height="@dimen/head_height"
+            android:text="@string/go_site"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+        <EditText
+            android:id="@+id/url"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textUri"
+            android:layout_toEndOf="@id/url_label"
+            android:layout_toRightOf="@id/url_label"
+            android:layout_toStartOf="@id/button"
+            android:layout_toLeftOf="@id/button" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/response"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/head_bar"
+        android:layout_margin="@dimen/margin"
+        android:background="@android:color/white"/>
+</RelativeLayout>

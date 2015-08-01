@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CustomRequestVolley</string>
+    <string name="url">URL</string>
+    <string name="go_site">GO</string>
+</resources>

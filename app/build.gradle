@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "info.nukoneko.tool.customrequestvolley"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "0.0.1"
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+    }
+    buildTypes {
+        applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                output.outputFile = new File(
+                        output.outputFile.parent,
+                        output.outputFile.
+                                name.
+                                replace(".apk", "-${variant.versionName}-${variant.versionCode}.apk"))
+            }
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-project.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-project.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:support-v4:22.2.1'
+    compile 'com.android.support:appcompat-v7:22.2.1'
+
+    compile 'com.fasterxml.jackson.core:jackson-core:2.6.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.6.0'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.6.0'
+
+    compile 'com.google.code.gson:gson:2.3.1'
+
+    compile 'com.jakewharton:butterknife:7.0.1'
+
+    compile project(":volley");
+}
+
+// for jackson
+repositories {
+    jcenter()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    def androidHome = System.getenv("ANDROID_HOME")
+    maven {
+        url "$androidHome/extras/android/m2repository/"
+    }
+}
